@@ -27,7 +27,10 @@ CREATE TABLE Employees (
     Salary DECIMAL(10,2),
     City VARCHAR(50)
 );
+
 select * from Employees;
+
+
 
 
 

@@ -18,3 +18,9 @@ values (101,"Omkar Bhagude",21,"omkarbhagude@gmail.com","BBA"),
 (104,"Aditya Birajdar",20,"adityabirajdar123@gmail.com","BCOM");
 
 select * from test_table;
+
+alter table test_table add column city varchar(50);
+
+select * from test_table;
+
+alter table test_table modify student_id int not null;
