@@ -51,3 +51,4 @@ alter table stock add column total_quantity int;
 
 alter table stock add constraint quantity_stock foreign key (total_quantity) references quantity (total_quantity);
 
+s
