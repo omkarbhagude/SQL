@@ -274,5 +274,167 @@ FROM Transactions
 WHERE TransactionType IN ('Deposit','Withdrawal')
 ORDER BY TransactionDate DESC;
 
+select * from customers;
 
+SELECT
+FirstName,
+UPPER(FirstName) AS UpperCaseName
+FROM customers;
+
+SELECT
+FirstName,
+LOWER(FirstName) AS LowerCaseName
+FROM customers;
+
+SELECT
+FirstName,
+LENGTH(FirstName) AS NameLength
+FROM customers;
+
+
+SELECT
+FirstName,
+LEFT(FirstName,3) AS Initials
+FROM customers;
+
+SELECT
+CONCAT(FirstName,' - ',LastName) AS FullName
+FROM customers;
+
+SELECT CURDATE(); 
+
+SELECT NOW();
+
+SELECT
+CustomerID,
+YEAR(DateOfBirth) AS BirthYear
+FROM customers;
+
+SELECT
+CustomerID,
+MONTH(DateOfBirth) AS BirthMonth
+FROM customers;
+
+SELECT
+CustomerID,
+DATEDIFF(CURDATE(),DateOfBirth) AS Days
+FROM customers;
+
+SELECT
+    FirstName,
+    DateOfBirth,
+    IF(YEAR(DateOfBirth) <= 1995,
+       'Adult',
+       'Young') AS Category
+FROM Customers;
+
+SELECT
+    FirstName,
+    IFNULL(Phone, 'Not Available') AS PhoneNumber
+FROM Customers;
+
+SELECT GREATEST(
+'2000-09-20',
+'1995-06-18',
+'1997-09-12',
+'1993-11-25'
+) AS LatestBirthDate;
+
+SELECT LEAST(
+'2000-09-20',
+'1995-06-18',
+'1997-09-12',
+'1993-11-25'
+) AS EarliestBirthDate;
+
+SELECT
+    FirstName,
+    NULLIF(FirstName,'Priya') AS Result
+FROM Customers;
+
+SELECT SUM(Balance) as total_balance
+FROM Accounts;
+
+SELECT AVG(Balance) AS average_balance
+FROM Accounts;
+
+SELECT MAX(Balance) AS highest_balance
+FROM Accounts;
+
+SELECT MIN(Balance) AS lowest_balance
+FROM Accounts;
+
+SELECT COUNT(*) AS total_accounts
+FROM Accounts;
+
+SELECT 
+    AccountType,
+    SUM(Balance) AS TotalBalance
+FROM Accounts
+GROUP BY AccountType;
+
+SELECT 
+    AccountType,
+    SUM(Balance) AS TotalBalance
+FROM Accounts
+GROUP BY AccountType
+HAVING SUM(Balance) > 25000;
+
+Select
+    LoanID,
+    CustomerID, LoanAmount, RANK() OVER(
+        ORDER BY LoanAmount DESC
+    ) AS LoanRank
+FROM Loans;
+
+SELECT
+    LoanID,
+    CustomerID,
+    LoanAmount,
+    DENSE_RANK() OVER(
+        ORDER BY LoanAmount DESC
+    ) AS DenseRank
+FROM Loans;
+
+SELECT
+    LoanID,
+    CustomerID,
+    LoanAmount,
+    ROW_NUMBER() OVER(
+        ORDER BY LoanAmount DESC
+    ) AS RowNumber
+FROM Loans;
+
+SELECT
+    LoanID,
+    CustomerID,
+    LoanAmount,
+    ROW_NUMBER() OVER(
+        PARTITION BY CustomerID
+        ORDER BY LoanAmount DESC
+    ) AS RowNum
+FROM Loans;
+
+SELECT
+    LoanID, CustomerID,LoanAmount,
+    SUM(LoanAmount) OVER(
+        ORDER BY LoanAmount DESC
+    ) AS RunningTotal
+FROM Loans;
+
+SELECT
+    LoanID,
+    CustomerID,
+    LoanAmount,
+    LAG(LoanAmount) OVER(
+        ORDER BY LoanAmount DESC
+    ) AS PreviousLoanAmount
+FROM Loans;
+
+SELECT
+    LoanID, CustomerID, LoanAmount,
+    LEAD(LoanAmount) OVER(
+        ORDER BY LoanAmount DESC
+    ) AS NextLoanAmount
+FROM Loans;
 
