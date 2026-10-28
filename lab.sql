@@ -438,3 +438,30 @@ SELECT
     ) AS NextLoanAmount
 FROM Loans;
 
+CREATE TABLE Account (
+    Account_ID INT PRIMARY KEY,
+    Account_Number VARCHAR(20),
+    Account_Holder VARCHAR(100),
+    Account_Type VARCHAR(30),
+    Balance DECIMAL(12,2),
+    Branch VARCHAR(50),
+    Open_Date DATE,
+    Status VARCHAR(20)
+);
+
+INSERT INTO Account
+(Account_ID, Account_Number, Account_Holder, Account_Type, Balance, Branch, Open_Date, Status)
+VALUES
+(1, 'ACC1001', 'Omkar Bhagude', 'Savings', 25000.00, 'Pune', '2024-01-15', 'Active'),
+(2, 'ACC1002', 'Rahul Patil', 'Current', 75000.00, 'Mumbai', '2023-05-20', 'Active'),
+(3, 'ACC1003', 'Priya Sharma', 'Savings', 18000.50, 'Nashik', '2024-02-10', 'Active'),
+(4, 'ACC1004', 'Amit Kumar', 'Fixed Deposit', 100000.00, 'Pune', '2022-08-25', 'Active'),
+(5, 'ACC1005', 'Sneha Jadhav', 'Savings', 12000.00, 'Latur', '2024-03-12', 'Inactive'),
+(6, 'ACC1006', 'Rohan Deshmukh', 'Current', 55000.75, 'Aurangabad', '2023-11-05', 'Active'),
+(7, 'ACC1007', 'Neha Patil', 'Savings', 8500.00, 'Pune', '2024-04-18', 'Active'),
+(8, 'ACC1008', 'Suresh Pawar', 'Fixed Deposit', 200000.00, 'Mumbai', '2021-09-10', 'Active'),
+(9, 'ACC1009', 'Pooja Shinde', 'Savings', 35000.25, 'Solapur', '2023-07-22', 'Active'),
+(10, 'ACC1010', 'Vikas More', 'Current', 90000.00, 'Latur', '2022-12-01', 'Inactive');
+
+select * from Account;
+
